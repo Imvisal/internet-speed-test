@@ -1,0 +1,942 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #080d1b;
+    --card: #10182d;
+    --card-hover: #151f38;
+    --text: #ffffff;
+    --muted: #8e99b5;
+    --border: rgba(255,255,255,0.09);
+    --input: #0b1224;
+    --accent: #6c63ff;
+    --accent2: #8b5cf6;
+    --success: #22c55e;
+    --blue: #38bdf8;
+}
+
+html[data-theme="light"] {
+    --bg: #f4f7fb;
+    --card: #ffffff;
+    --card-hover: #f8fafc;
+    --text: #111827;
+    --muted: #667085;
+    --border: rgba(15,23,42,0.10);
+    --input: #ffffff;
+    --accent: #635bff;
+    --accent2: #7c3aed;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(108,99,255,0.12),
+            transparent 35%
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 25px 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.brand-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent2)
+        );
+
+    font-size: 22px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(108,99,255,0.25);
+}
+
+.brand-text {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.brand-text strong {
+    font-size: 19px;
+}
+
+.brand-text span {
+    font-size: 11px;
+
+    color: var(--muted);
+}
+
+
+/* =========================================================
+   THEME BUTTON
+========================================================= */
+
+.theme-toggle {
+    width: 43px;
+    height: 43px;
+
+    border-radius: 50%;
+
+    border: 1px solid var(--border);
+
+    background: var(--card);
+
+    color: var(--text);
+
+    cursor: pointer;
+
+    font-size: 19px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.2s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main {
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 20px 22px 60px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    text-align: center;
+
+    padding:
+        55px 10px
+        35px;
+}
+
+.hero-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 8px 14px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(108,99,255,0.10);
+
+    border:
+        1px solid
+        rgba(108,99,255,0.20);
+
+    color: var(--accent);
+
+    font-size: 12px;
+
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 6vw, 58px);
+
+    line-height: 1.08;
+
+    letter-spacing: -1.5px;
+
+    margin-bottom: 17px;
+}
+
+.hero h1 span {
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent),
+            var(--accent2)
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
+}
+
+.hero p {
+    max-width: 520px;
+
+    margin: auto;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   SPEED TEST CARD
+========================================================= */
+
+.speed-test-card {
+    position: relative;
+
+    background: var(--card);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 28px;
+
+    padding: 35px 25px 32px;
+
+    text-align: center;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,0.18);
+
+    overflow: hidden;
+}
+
+.speed-test-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+    height: 260px;
+
+    top: -150px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background:
+        rgba(108,99,255,0.12);
+
+    filter: blur(60px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.test-status {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    margin-bottom: 25px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: var(--success);
+
+    box-shadow:
+        0 0 10px
+        rgba(34,197,94,0.6);
+}
+
+
+/* =========================================================
+   SPEED CIRCLE
+========================================================= */
+
+.speed-circle {
+    width: 250px;
+    height: 250px;
+
+    margin: 0 auto 30px;
+
+    border-radius: 50%;
+
+    padding: 9px;
+
+    background:
+        conic-gradient(
+            var(--accent) 0deg,
+            var(--accent2) 90deg,
+            rgba(255,255,255,0.07) 90deg,
+            rgba(255,255,255,0.07) 360deg
+        );
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+        0 0 50px
+        rgba(108,99,255,0.12);
+}
+
+.speed-inner {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    background: var(--card);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.speed-value {
+    font-size: 52px;
+
+    font-weight: 700;
+
+    line-height: 1;
+}
+
+.speed-unit {
+    margin-top: 7px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+}
+
+.test-type {
+    margin-top: 12px;
+
+    font-size: 12px;
+
+    color: var(--accent);
+}
+
+
+/* =========================================================
+   START BUTTON
+========================================================= */
+
+.start-test-btn {
+    border: none;
+
+    min-width: 190px;
+
+    padding: 15px 25px;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent2)
+        );
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 30px
+        rgba(108,99,255,0.25);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.start-test-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 16px 35px
+        rgba(108,99,255,0.35);
+}
+
+.start-test-btn:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress-container {
+    max-width: 400px;
+
+    margin:
+        25px auto
+        0;
+}
+
+.progress-track {
+    width: 100%;
+
+    height: 5px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.07);
+
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent),
+            var(--accent2)
+        );
+
+    transition: width 0.3s ease;
+}
+
+
+/* =========================================================
+   RESULTS
+========================================================= */
+
+.results-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 14px;
+
+    margin-top: 18px;
+}
+
+.result-card {
+    background: var(--card);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-2px);
+
+    background: var(--card-hover);
+}
+
+.result-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+.download-icon {
+    background: rgba(34,197,94,0.12);
+
+    color: #22c55e;
+}
+
+.upload-icon {
+    background: rgba(56,189,248,0.12);
+
+    color: #38bdf8;
+}
+
+.ping-icon {
+    background: rgba(168,85,247,0.12);
+
+    color: #a855f7;
+}
+
+.result-info {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.result-info > span {
+    font-size: 12px;
+
+    color: var(--muted);
+}
+
+.result-info strong {
+    font-size: 22px;
+}
+
+.result-info small {
+    font-size: 11px;
+
+    color: var(--muted);
+
+    font-weight: normal;
+}
+
+
+/* =========================================================
+   CONNECTION CARD
+========================================================= */
+
+.connection-card,
+.speed-guide {
+    margin-top: 18px;
+
+    padding: 25px;
+
+    background: var(--card);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 22px;
+}
+
+.section-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 22px;
+}
+
+.section-title-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(108,99,255,0.12);
+
+    font-size: 19px;
+}
+
+.section-title h2 {
+    font-size: 17px;
+
+    margin-bottom: 4px;
+}
+
+.section-title p {
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.connection-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 10px;
+}
+
+.connection-item {
+    padding: 16px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 14px;
+
+    background:
+        rgba(255,255,255,0.015);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.connection-item span {
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.connection-item strong {
+    font-size: 14px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   SPEED GUIDE
+========================================================= */
+
+.guide-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+.guide-item {
+    padding: 17px 12px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 14px;
+
+    text-align: center;
+}
+
+.guide-item strong {
+    display: block;
+
+    font-size: 14px;
+
+    margin-bottom: 7px;
+
+    color: var(--accent);
+}
+
+.guide-item span {
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+    max-width: 900px;
+
+    margin: auto;
+
+    padding:
+        25px 22px
+        35px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.footer-brand {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    color: var(--text);
+
+    margin-bottom: 7px;
+}
+
+.footer-brand strong {
+    font-size: 15px;
+}
+
+.footer p {
+    color: var(--muted);
+
+    margin-bottom: 15px;
+}
+
+.footer-copy {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    opacity: 0.7;
+}
+
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+html[data-theme="light"] body {
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(99,91,255,0.08),
+            transparent 35%
+        ),
+        var(--bg);
+}
+
+html[data-theme="light"] .speed-circle {
+    background:
+        conic-gradient(
+            var(--accent) 0deg,
+            var(--accent2) 90deg,
+            rgba(0,0,0,0.08) 90deg,
+            rgba(0,0,0,0.08) 360deg
+        );
+}
+
+html[data-theme="light"] .progress-track {
+    background: rgba(0,0,0,0.08);
+}
+
+html[data-theme="light"] .connection-item,
+html[data-theme="light"] .guide-item {
+    background: rgba(0,0,0,0.015);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .header {
+        padding:
+            18px 16px;
+    }
+
+    main {
+        padding:
+            10px 15px 45px;
+    }
+
+    .hero {
+        padding:
+            38px 5px
+            28px;
+    }
+
+    .hero h1 {
+        font-size: 38px;
+
+        letter-spacing: -1px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .speed-test-card {
+        padding:
+            28px 15px;
+    }
+
+    .speed-circle {
+        width: 220px;
+        height: 220px;
+    }
+
+    .speed-value {
+        font-size: 46px;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-card {
+        padding: 17px;
+    }
+
+    .connection-card,
+    .speed-guide {
+        padding: 19px;
+    }
+
+    .connection-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guide-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .start-test-btn {
+        width: 100%;
+
+        max-width: 280px;
+    }
+}
+
+
+@media (max-width: 400px) {
+
+    .hero h1 {
+        font-size: 33px;
+    }
+
+    .speed-circle {
+        width: 200px;
+        height: 200px;
+    }
+
+    .speed-value {
+        font-size: 42px;
+    }
+
+    .guide-grid {
+        grid-template-columns: 1fr;
+    }
+}
