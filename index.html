@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Fast and simple internet speed test tool"
+    >
+
+    <meta
+        name="theme-color"
+        content="#080d1b"
+    >
+
+    <title>NetSpeed - Internet Speed Test</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="header">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                ⚡
+            </div>
+
+            <div class="brand-text">
+
+                <strong>
+                    NetSpeed
+                </strong>
+
+                <span>
+                    Internet Tools
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="themeToggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle theme"
+        >
+            🌙
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-badge">
+                🌐 Internet Speed Test
+            </div>
+
+            <h1>
+                Check Your
+                <span>Internet Speed</span>
+            </h1>
+
+            <p>
+                Test your download speed, upload speed
+                and connection latency.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             SPEED TEST
+        ========================== -->
+
+        <section class="speed-test-card">
+
+            <div class="test-status">
+
+                <span
+                    id="statusDot"
+                    class="status-dot"
+                ></span>
+
+                <span id="statusText">
+                    Ready to test
+                </span>
+
+            </div>
+
+
+            <!-- Speed Circle -->
+
+            <div class="speed-circle">
+
+                <div class="speed-inner">
+
+                    <span
+                        id="speedValue"
+                        class="speed-value"
+                    >
+                        0
+                    </span>
+
+                    <span class="speed-unit">
+                        Mbps
+                    </span>
+
+                    <span
+                        id="testType"
+                        class="test-type"
+                    >
+                        Ready
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Start Button -->
+
+            <button
+                id="startTestBtn"
+                class="start-test-btn"
+                type="button"
+            >
+
+                <span>
+                    ⚡
+                </span>
+
+                Start Test
+
+            </button>
+
+
+            <!-- Progress -->
+
+            <div
+                id="progressContainer"
+                class="progress-container"
+            >
+
+                <div class="progress-track">
+
+                    <div
+                        id="progressBar"
+                        class="progress-bar"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RESULTS
+        ========================== -->
+
+        <section class="results-grid">
+
+            <!-- Download -->
+
+            <div class="result-card">
+
+                <div class="result-icon download-icon">
+                    ↓
+                </div>
+
+                <div class="result-info">
+
+                    <span>
+                        Download
+                    </span>
+
+                    <strong>
+                        <span id="downloadValue">
+                            —
+                        </span>
+
+                        <small>
+                            Mbps
+                        </small>
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Upload -->
+
+            <div class="result-card">
+
+                <div class="result-icon upload-icon">
+                    ↑
+                </div>
+
+                <div class="result-info">
+
+                    <span>
+                        Upload
+                    </span>
+
+                    <strong>
+
+                        <span id="uploadValue">
+                            —
+                        </span>
+
+                        <small>
+                            Mbps
+                        </small>
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Ping -->
+
+            <div class="result-card">
+
+                <div class="result-icon ping-icon">
+                    ◉
+                </div>
+
+                <div class="result-info">
+
+                    <span>
+                        Ping
+                    </span>
+
+                    <strong>
+
+                        <span id="pingValue">
+                            —
+                        </span>
+
+                        <small>
+                            ms
+                        </small>
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONNECTION INFO
+        ========================== -->
+
+        <section class="connection-card">
+
+            <div class="section-title">
+
+                <div class="section-title-icon">
+                    🌐
+                </div>
+
+                <div>
+
+                    <h2>
+                        Connection Information
+                    </h2>
+
+                    <p>
+                        Your current network details
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="connection-grid">
+
+                <div class="connection-item">
+
+                    <span>
+                        IP Address
+                    </span>
+
+                    <strong id="ipAddress">
+                        Checking...
+                    </strong>
+
+                </div>
+
+
+                <div class="connection-item">
+
+                    <span>
+                        ISP
+                    </span>
+
+                    <strong id="ispName">
+                        Checking...
+                    </strong>
+
+                </div>
+
+
+                <div class="connection-item">
+
+                    <span>
+                        Location
+                    </span>
+
+                    <strong id="locationName">
+                        Checking...
+                    </strong>
+
+                </div>
+
+
+                <div class="connection-item">
+
+                    <span>
+                        Connection
+                    </span>
+
+                    <strong id="connectionType">
+                        Checking...
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SPEED GUIDE
+        ========================== -->
+
+        <section class="speed-guide">
+
+            <div class="section-title">
+
+                <div class="section-title-icon">
+                    📊
+                </div>
+
+                <div>
+
+                    <h2>
+                        What Can Your Speed Do?
+                    </h2>
+
+                    <p>
+                        A quick guide to internet speeds
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="guide-grid">
+
+                <div class="guide-item">
+
+                    <strong>
+                        1–5 Mbps
+                    </strong>
+
+                    <span>
+                        Basic browsing
+                    </span>
+
+                </div>
+
+
+                <div class="guide-item">
+
+                    <strong>
+                        5–25 Mbps
+                    </strong>
+
+                    <span>
+                        HD streaming
+                    </span>
+
+                </div>
+
+
+                <div class="guide-item">
+
+                    <strong>
+                        25–100 Mbps
+                    </strong>
+
+                    <span>
+                        Gaming & 4K streaming
+                    </span>
+
+                </div>
+
+
+                <div class="guide-item">
+
+                    <strong>
+                        100+ Mbps
+                    </strong>
+
+                    <span>
+                        Heavy downloads
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        <div class="footer-brand">
+
+            ⚡
+
+            <strong>
+                NetSpeed
+            </strong>
+
+        </div>
+
+        <p>
+            Simple, fast and free internet tools.
+        </p>
+
+        <div class="footer-copy">
+
+            © 2026 NetSpeed
+
+            <span>•</span>
+
+            Internet Speed Test
+
+        </div>
+
+    </footer>
+
+
+    <script
+        src="script.js"
+    ></script>
+
+</body>
+
+</html>
