@@ -157,19 +157,41 @@ async function loadConnectionInfo() {
                 "Unknown";
 
 
-            if (connection.type) {
+           if (connectionType) {
 
-                type +=
-                    ` (${connection.type})`;
-            }
+    const browserType =
+        connection.type || "";
 
+    const effective =
+        connection.effectiveType || "";
 
-            if (connectionType) {
+    if (
+        browserType === "cellular"
+    ) {
 
-                connectionType.textContent =
-                    type;
-            }
+        connectionType.textContent =
+            "Mobile Network";
 
+    } else if (
+        browserType === "wifi"
+    ) {
+
+        connectionType.textContent =
+            "Wi-Fi";
+
+    } else if (
+        effective === "4g"
+    ) {
+
+        connectionType.textContent =
+            "High Speed";
+
+    } else {
+
+        connectionType.textContent =
+            "Network";
+    }
+}
         } else {
 
             if (connectionType) {
